@@ -26,9 +26,9 @@ export function parseStatus(sysinfo: SysInfo, playing: Playing): NowPlaying {
   };
 }
 
-const OFFLINE: NowPlaying = {
+const OFFLINE: NowPlaying = Object.freeze({
   online: false, core: null, systemName: null, game: null, gameName: null, hostname: null,
-};
+});
 
 /** Thin REST client for the mrext Remote API. */
 export class MisterRest {

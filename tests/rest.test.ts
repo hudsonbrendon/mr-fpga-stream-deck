@@ -28,6 +28,7 @@ describe("parseStatus", () => {
     const np = parseStatus({ hostname: "MiSTer" }, {});
     expect(np.online).toBe(true);
     expect(np.core).toBeNull();
+    expect(np.systemName).toBeNull();
     expect(np.game).toBeNull();
     expect(np.gameName).toBeNull();
     expect(np.hostname).toBe("MiSTer");
