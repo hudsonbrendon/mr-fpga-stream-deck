@@ -2,6 +2,7 @@ node_modules/
 dist/
 com.hudsonbrendon.mister.sdPlugin/bin/
 com.hudsonbrendon.mister.sdPlugin/logs/
+logs/
 *.streamDeckPlugin
 .DS_Store
 site/
