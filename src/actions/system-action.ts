@@ -4,7 +4,7 @@ import { probeTelemetry } from "../mister/ssh.js";
 import { renderSystem } from "../core/render.js";
 import type { GlobalSettings } from "../core/types.js";
 
-@action({ UUID: "com.hudsonbrendon.mister.system" })
+@action({ UUID: "com.hudsonbrendon.mrfpga.system" })
 export class SystemAction extends BaseDisplayAction {
   protected readonly label = "system";
   protected async render(s: GlobalSettings): Promise<string> {

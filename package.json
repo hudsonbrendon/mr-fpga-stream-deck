@@ -1,7 +1,7 @@
 {
-  "name": "mister-companion-streamdeck",
+  "name": "mr-fpga-stream-deck",
   "version": "0.1.0",
-  "description": "Stream Deck plugin showing live MiSTer FPGA status, system health, RetroAchievements, and controls.",
+  "description": "Stream Deck plugin showing live Mr. FPGA status, system health, RetroAchievements, and controls.",
   "type": "module",
   "license": "MIT",
   "author": "Hudson Brendon",
@@ -11,7 +11,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "icons": "node scripts/render-icons.mjs",
-    "pack": "streamdeck pack com.hudsonbrendon.mister.sdPlugin --output dist --force"
+    "pack": "streamdeck pack com.hudsonbrendon.mrfpga.sdPlugin --output dist --force"
   },
   "dependencies": {
     "@elgato/streamdeck": "^1.0.0",

@@ -2,7 +2,7 @@ import sharp from "sharp";
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 
-const out = "com.hudsonbrendon.mister.sdPlugin/imgs";
+const out = "com.hudsonbrendon.mrfpga.sdPlugin/imgs";
 mkdirSync(join(out, "plugin"), { recursive: true });
 mkdirSync(join(out, "actions"), { recursive: true });
 

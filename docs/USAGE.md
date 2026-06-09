@@ -1,13 +1,13 @@
 # Usage
 
-Add any of the four keys from the **MiSTer Companion** category.
+Add any of the four keys from the **Mr. FPGA Stream Deck** category.
 
 ```
 ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
-│ ●            │ │    SYSTEM    │ │    RETRO     │ │    MiSTer    │
+│ ●            │ │    SYSTEM    │ │    RETRO     │ │    Mr. FPGA    │
 │    SNES      │ │ LOAD    0.42 │ │    12345     │ │              │
 │ Chrono Tr…   │ │ RAM      38% │ │  pts · #678  │ │    REBOOT    │
-│   MiSTer     │ │ ▓▓▓▓░░░░░░░  │ │     25%      │ │              │
+│   Mr. FPGA     │ │ ▓▓▓▓░░░░░░░  │ │     25%      │ │              │
 │              │ │ UP     3d4h  │ │ ▓▓▓░░░░░░░░  │ │              │
 └──────────────┘ └──────────────┘ └──────────────┘ └──────────────┘
   Now Playing       System          RetroAch.        Control
@@ -22,7 +22,7 @@ Display keys auto-refresh on the interval (default 15s); **tap** to refresh now.
 
 ## Settings
 
-- **MiSTer IP / host**, **REST port** *(global)* — the mrext Remote endpoint.
+- **Mr. FPGA IP / host**, **REST port** *(global)* — the mrext Remote endpoint.
 - **Refresh (sec)** *(global)* — poll interval (default 15, min 5).
 - **SSH user / password / port** *(global)* — for the System key.
 - **RA username / Web API key** *(global)* — for the RetroAchievements key.

@@ -5,7 +5,7 @@ import { renderControl } from "../core/render.js";
 import { DEFAULT_GLOBAL_SETTINGS, type ControlKind, type ControlSettings, type GlobalSettings } from "../core/types.js";
 import { svgDataUri, type ActionLike } from "./base-display-action.js";
 
-@action({ UUID: "com.hudsonbrendon.mister.control" })
+@action({ UUID: "com.hudsonbrendon.mrfpga.control" })
 export class ControlAction extends SingletonAction {
   private kinds = new Map<string, ControlKind>();
   private paths = new Map<string, string | undefined>();

@@ -1,7 +1,7 @@
 node_modules/
 dist/
-com.hudsonbrendon.mister.sdPlugin/bin/
-com.hudsonbrendon.mister.sdPlugin/logs/
+com.hudsonbrendon.mrfpga.sdPlugin/bin/
+com.hudsonbrendon.mrfpga.sdPlugin/logs/
 logs/
 *.streamDeckPlugin
 .DS_Store

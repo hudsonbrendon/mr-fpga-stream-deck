@@ -1,15 +1,15 @@
 {
   "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
-  "Name": "MiSTer Companion",
+  "Name": "Mr. FPGA Stream Deck",
   "Version": "0.1.0.0",
   "Author": "Hudson Brendon",
-  "Description": "Live MiSTer FPGA status, system health, RetroAchievements, and one-press controls on your Stream Deck.",
-  "Category": "MiSTer Companion",
+  "Description": "Live Mr. FPGA status, system health, RetroAchievements, and one-press controls on your Stream Deck.",
+  "Category": "Mr. FPGA Stream Deck",
   "CategoryIcon": "imgs/plugin/category",
   "Icon": "imgs/plugin/icon",
-  "URL": "https://github.com/hudsonbrendon/mister-companion-streamdeck",
+  "URL": "https://github.com/hudsonbrendon/mr-fpga-stream-deck",
   "SDKVersion": 2,
-  "UUID": "com.hudsonbrendon.mister",
+  "UUID": "com.hudsonbrendon.mrfpga",
   "Software": {
     "MinimumVersion": "6.5"
   },
@@ -31,9 +31,9 @@
   "Actions": [
     {
       "Name": "Now Playing",
-      "UUID": "com.hudsonbrendon.mister.nowplaying",
+      "UUID": "com.hudsonbrendon.mrfpga.nowplaying",
       "Icon": "imgs/actions/nowplaying",
-      "Tooltip": "Current core and game on the MiSTer.",
+      "Tooltip": "Current core and game on the Mr. FPGA.",
       "Controllers": [
         "Keypad"
       ],
@@ -47,9 +47,9 @@
     },
     {
       "Name": "System",
-      "UUID": "com.hudsonbrendon.mister.system",
+      "UUID": "com.hudsonbrendon.mrfpga.system",
       "Icon": "imgs/actions/system",
-      "Tooltip": "MiSTer system health (load, RAM, uptime) over SSH.",
+      "Tooltip": "Mr. FPGA system health (load, RAM, uptime) over SSH.",
       "Controllers": [
         "Keypad"
       ],
@@ -63,7 +63,7 @@
     },
     {
       "Name": "RetroAchievements",
-      "UUID": "com.hudsonbrendon.mister.retroachievements",
+      "UUID": "com.hudsonbrendon.mrfpga.retroachievements",
       "Icon": "imgs/actions/ra",
       "Tooltip": "RetroAchievements points, rank, and current-game progress.",
       "Controllers": [
@@ -79,7 +79,7 @@
     },
     {
       "Name": "Control",
-      "UUID": "com.hudsonbrendon.mister.control",
+      "UUID": "com.hudsonbrendon.mrfpga.control",
       "Icon": "imgs/actions/control",
       "Tooltip": "Reboot, menu, screenshot, volume, or launch a game.",
       "Controllers": [

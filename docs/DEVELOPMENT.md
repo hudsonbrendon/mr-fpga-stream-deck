@@ -11,7 +11,7 @@
 
 ```bash
 npm test          # vitest run
-npm run build     # rollup → com.hudsonbrendon.mister.sdPlugin/bin/plugin.js
+npm run build     # rollup → com.hudsonbrendon.mrfpga.sdPlugin/bin/plugin.js
 npm run watch     # rebuild on change
 npm run icons     # regenerate icons
 npm run pack      # produce a .streamDeckPlugin in dist/
@@ -19,6 +19,6 @@ npm run pack      # produce a .streamDeckPlugin in dist/
 
 ## Debugging
 
-`npx streamdeck restart com.hudsonbrendon.mister` after a build. Logs at
-`com.hudsonbrendon.mister.sdPlugin/logs/*.log`. If a rebuild isn't picked up, fully relaunch the
+`npx streamdeck restart com.hudsonbrendon.mrfpga` after a build. Logs at
+`com.hudsonbrendon.mrfpga.sdPlugin/logs/*.log`. If a rebuild isn't picked up, fully relaunch the
 plugin process.

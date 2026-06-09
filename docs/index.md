@@ -1,6 +1,6 @@
-# MiSTer Companion — Stream Deck Plugin
+# Mr. FPGA Stream Deck
 
-Live MiSTer FPGA status, system health, RetroAchievements, and one-press controls.
+Live Mr. FPGA status, system health, RetroAchievements, and one-press controls.
 
 - [Install](INSTALL.md)
 - [Usage](USAGE.md)

@@ -1,6 +1,6 @@
-site_name: MiSTer Companion — Stream Deck
-site_url: https://hudsonbrendon.github.io/mister-companion-streamdeck/
-repo_url: https://github.com/hudsonbrendon/mister-companion-streamdeck
+site_name: Mr. FPGA Stream Deck
+site_url: https://hudsonbrendon.github.io/mr-fpga-stream-deck/
+repo_url: https://github.com/hudsonbrendon/mr-fpga-stream-deck
 theme:
   name: material
   palette:
