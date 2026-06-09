@@ -1,6 +1,6 @@
 import streamDeck, { SingletonAction, action } from "@elgato/streamdeck";
 import type { WillAppearEvent, KeyDownEvent, DidReceiveSettingsEvent } from "@elgato/streamdeck";
-import { MisterRest } from "../mister/rest.js";
+import { MrFpgaRest } from "../mister/rest.js";
 import { renderControl } from "../core/render.js";
 import { DEFAULT_GLOBAL_SETTINGS, type ControlKind, type ControlSettings, type GlobalSettings } from "../core/types.js";
 import { svgDataUri, type ActionLike } from "./base-display-action.js";
@@ -41,7 +41,7 @@ export class ControlAction extends SingletonAction {
     const globalSettings = await this.global();
     if (!globalSettings.host) { await a.showAlert(); return; }
     try {
-      await new MisterRest(globalSettings.host, globalSettings.port).runControl(kind, this.paths.get(ev.action.id));
+      await new MrFpgaRest(globalSettings.host, globalSettings.port).runControl(kind, this.paths.get(ev.action.id));
       await ev.action.showOk();
     } catch (err) {
       streamDeck.logger.error(`control ${kind} failed`, err);

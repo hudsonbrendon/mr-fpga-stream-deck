@@ -15,6 +15,6 @@ npm run icons     # regenerate PNG icons from assets/*.svg
 
 - **TDD.** Add a failing test under `tests/` before implementing logic. Keep the SDK/network/SSH
   glue (`src/actions`, the `fetch`/`ssh2` calls) thin — push parsing into testable functions.
-- **Adding a control:** extend `ControlKind`, `MisterRest.runControl`, `renderControl`, and the
+- **Adding a control:** extend `ControlKind`, `MrFpgaRest.runControl`, `renderControl`, and the
   `ui/control.html` picker.
 - **Commits:** conventional commits (`feat:`, `fix:`, `docs:`, `chore:`).

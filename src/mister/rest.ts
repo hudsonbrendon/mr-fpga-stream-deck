@@ -31,7 +31,7 @@ const OFFLINE: NowPlaying = Object.freeze({
 });
 
 /** Thin REST client for the mrext Remote API. */
-export class MisterRest {
+export class MrFpgaRest {
   private readonly base: string;
   constructor(host: string, port = 8182, private readonly timeoutMs = 6000) {
     this.base = `http://${host}:${port}/api`;
