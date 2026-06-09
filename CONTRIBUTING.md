@@ -1,6 +1,6 @@
 # Contributing
 
-All non-I/O logic lives in pure, unit-tested modules under `src/core` and `src/mister`.
+All non-I/O logic lives in pure, unit-tested modules under `src/core` and `src/mrfpga`.
 
 ## Setup
 

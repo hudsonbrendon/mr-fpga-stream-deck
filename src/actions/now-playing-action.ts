@@ -1,6 +1,6 @@
 import { action } from "@elgato/streamdeck";
 import { BaseDisplayAction } from "./base-display-action.js";
-import { MrFpgaRest } from "../mister/rest.js";
+import { MrFpgaRest } from "../mrfpga/rest.js";
 import { renderNowPlaying } from "../core/render.js";
 import type { GlobalSettings } from "../core/types.js";
 

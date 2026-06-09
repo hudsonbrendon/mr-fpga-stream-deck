@@ -3,7 +3,7 @@
 ## Layout
 
 - `src/core` — types, formatting, SVG rendering (pure, unit-tested).
-- `src/mister` — REST / SSH / RetroAchievements clients (parsers unit-tested).
+- `src/mrfpga` — REST / SSH / RetroAchievements clients (parsers unit-tested).
 - `src/actions` — Stream Deck SDK glue (thin).
 - `assets` + `scripts/render-icons.mjs` — icon design and PNG generation.
 

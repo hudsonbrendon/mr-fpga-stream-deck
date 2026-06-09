@@ -1,6 +1,6 @@
 import { action } from "@elgato/streamdeck";
 import { BaseDisplayAction } from "./base-display-action.js";
-import { fetchRaStats } from "../mister/ra.js";
+import { fetchRaStats } from "../mrfpga/ra.js";
 import { renderRa } from "../core/render.js";
 import type { GlobalSettings } from "../core/types.js";
 

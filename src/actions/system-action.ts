@@ -1,6 +1,6 @@
 import { action } from "@elgato/streamdeck";
 import { BaseDisplayAction } from "./base-display-action.js";
-import { probeTelemetry } from "../mister/ssh.js";
+import { probeTelemetry } from "../mrfpga/ssh.js";
 import { renderSystem } from "../core/render.js";
 import type { GlobalSettings, SystemKeySettings, SystemMetric } from "../core/types.js";
 

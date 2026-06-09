@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseRankScore, parseRecentGame } from "../src/mister/ra.js";
+import { parseRankScore, parseRecentGame } from "../src/mrfpga/ra.js";
 
 describe("parseRankScore", () => {
   it("extracts hardcore points, rank, total ranked", () => {

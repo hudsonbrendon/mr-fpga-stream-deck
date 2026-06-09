@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseSshProbe } from "../src/mister/ssh.js";
+import { parseSshProbe } from "../src/mrfpga/ssh.js";
 
 describe("parseSshProbe", () => {
   it("parses the batched probe output", () => {

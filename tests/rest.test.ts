@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseStatus } from "../src/mister/rest.js";
+import { parseStatus } from "../src/mrfpga/rest.js";
 
 describe("parseStatus", () => {
   it("combines sysinfo + playing into a NowPlaying snapshot", () => {
