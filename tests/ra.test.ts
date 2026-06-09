@@ -12,6 +12,7 @@ describe("parseRankScore", () => {
     const r = parseRankScore({});
     expect(r.hardcorePoints).toBe(0);
     expect(r.rank).toBeNull();
+    expect(r.totalRanked).toBeNull();
   });
 });
 
