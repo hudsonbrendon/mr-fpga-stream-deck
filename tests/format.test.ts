@@ -14,6 +14,11 @@ describe("formatUptime", () => {
   it("renders '—' for null", () => {
     expect(formatUptime(null)).toBe("—");
   });
+  it("renders '—' for non-finite or negative values", () => {
+    expect(formatUptime(NaN)).toBe("—");
+    expect(formatUptime(Infinity)).toBe("—");
+    expect(formatUptime(-5)).toBe("—");
+  });
 });
 
 describe("formatPercent", () => {

@@ -13,7 +13,7 @@ export interface GlobalSettings {
 export const DEFAULT_GLOBAL_SETTINGS: GlobalSettings = {
   port: 8182,
   sshUser: "root",
-  sshPassword: "1",
+  sshPassword: "1", // MiSTer stock default credential
   sshPort: 22,
   refreshSeconds: 15,
 };
