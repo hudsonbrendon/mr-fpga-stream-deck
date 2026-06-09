@@ -1,0 +1,58 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+  "Name": "MiSTer Companion",
+  "Version": "0.1.0.0",
+  "Author": "Hudson Brendon",
+  "Description": "Live MiSTer FPGA status, system health, RetroAchievements, and one-press controls on your Stream Deck.",
+  "Category": "MiSTer Companion",
+  "CategoryIcon": "imgs/plugin/category",
+  "Icon": "imgs/plugin/icon",
+  "URL": "https://github.com/hudsonbrendon/mister-companion-streamdeck",
+  "SDKVersion": 2,
+  "UUID": "com.hudsonbrendon.mister",
+  "Software": { "MinimumVersion": "6.5" },
+  "OS": [
+    { "Platform": "mac", "MinimumVersion": "12" },
+    { "Platform": "windows", "MinimumVersion": "10" }
+  ],
+  "Nodejs": { "Version": "20", "Debug": "enabled" },
+  "CodePath": "bin/plugin.js",
+  "Actions": [
+    {
+      "Name": "Now Playing",
+      "UUID": "com.hudsonbrendon.mister.nowplaying",
+      "Icon": "imgs/actions/nowplaying",
+      "Tooltip": "Current core and game on the MiSTer.",
+      "Controllers": ["Keypad"],
+      "PropertyInspectorPath": "ui/display.html",
+      "States": [{ "Image": "imgs/actions/nowplaying-key", "TitleAlignment": "middle" }]
+    },
+    {
+      "Name": "System",
+      "UUID": "com.hudsonbrendon.mister.system",
+      "Icon": "imgs/actions/system",
+      "Tooltip": "MiSTer system health (load, RAM, uptime) over SSH.",
+      "Controllers": ["Keypad"],
+      "PropertyInspectorPath": "ui/display.html",
+      "States": [{ "Image": "imgs/actions/system-key", "TitleAlignment": "middle" }]
+    },
+    {
+      "Name": "RetroAchievements",
+      "UUID": "com.hudsonbrendon.mister.retroachievements",
+      "Icon": "imgs/actions/ra",
+      "Tooltip": "RetroAchievements points, rank, and current-game progress.",
+      "Controllers": ["Keypad"],
+      "PropertyInspectorPath": "ui/display.html",
+      "States": [{ "Image": "imgs/actions/ra-key", "TitleAlignment": "middle" }]
+    },
+    {
+      "Name": "Control",
+      "UUID": "com.hudsonbrendon.mister.control",
+      "Icon": "imgs/actions/control",
+      "Tooltip": "Reboot, menu, screenshot, volume, or launch a game.",
+      "Controllers": ["Keypad"],
+      "PropertyInspectorPath": "ui/control.html",
+      "States": [{ "Image": "imgs/actions/control-key", "TitleAlignment": "middle" }]
+    }
+  ]
+}
