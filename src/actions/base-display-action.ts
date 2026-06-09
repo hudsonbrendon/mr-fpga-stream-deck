@@ -1,5 +1,5 @@
 import streamDeck, { SingletonAction } from "@elgato/streamdeck";
-import type { WillAppearEvent, WillDisappearEvent, KeyDownEvent } from "@elgato/streamdeck";
+import type { WillAppearEvent, WillDisappearEvent, KeyDownEvent, DidReceiveSettingsEvent } from "@elgato/streamdeck";
 import { DEFAULT_GLOBAL_SETTINGS, type GlobalSettings } from "../core/types.js";
 
 /** Minimal action surface; satisfied by the SDK's KeyAction. */
@@ -21,12 +21,17 @@ export function svgDataUri(svg: string): string {
  * `getGlobalSettings()` (which would echo into the listener and spin a refresh storm).
  */
 export abstract class BaseDisplayAction extends SingletonAction {
-  /** Fetch data and return the key SVG. Throw to show an error. */
-  protected abstract render(settings: GlobalSettings): Promise<string>;
+  /** Fetch data and return the key SVG for the given action instance. Throw to show an error. */
+  protected abstract render(settings: GlobalSettings, actionId: string): Promise<string>;
   /** Short label shown in error/needs-config states. */
   protected abstract readonly label: string;
   /** True if this action has the config it needs (default: a host is set). */
   protected needs(settings: GlobalSettings): boolean { return Boolean(settings.host); }
+  /**
+   * Hook for per-key settings carried in the event payload (never read via getSettings(),
+   * which echoes). Subclasses cache what they need, keyed by action id. Default: no-op.
+   */
+  protected onKeySettings(_actionId: string, _settings: unknown): void {}
 
   private timers = new Map<string, ReturnType<typeof setInterval>>();
   private settings: GlobalSettings = { ...DEFAULT_GLOBAL_SETTINGS };
@@ -47,10 +52,18 @@ export abstract class BaseDisplayAction extends SingletonAction {
 
   override async onWillAppear(ev: WillAppearEvent): Promise<void> {
     const action = ev.action as unknown as ActionLike;
+    this.onKeySettings(action.id, ev.payload?.settings);
     this.pendingSelfWrites++;
     const stored = await streamDeck.settings.getGlobalSettings<Partial<GlobalSettings>>();
     this.settings = { ...DEFAULT_GLOBAL_SETTINGS, ...stored };
     this.startTimer(action);
+    await this.refresh(action);
+  }
+
+  override async onDidReceiveSettings(ev: DidReceiveSettingsEvent): Promise<void> {
+    // A per-key setting changed in the Property Inspector — update the cache and repaint.
+    const action = ev.action as unknown as ActionLike;
+    this.onKeySettings(action.id, ev.payload?.settings);
     await this.refresh(action);
   }
 
@@ -82,7 +95,7 @@ export abstract class BaseDisplayAction extends SingletonAction {
       return;
     }
     try {
-      const svg = await this.render(this.settings);
+      const svg = await this.render(this.settings, action.id);
       await action.setTitle("");
       await action.setImage(svgDataUri(svg));
       streamDeck.logger.info(`${this.label}: updated`);

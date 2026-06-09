@@ -7,7 +7,7 @@ import type { GlobalSettings } from "../core/types.js";
 @action({ UUID: "com.hudsonbrendon.mrfpga.nowplaying" })
 export class NowPlayingAction extends BaseDisplayAction {
   protected readonly label = "mrfpga";
-  protected async render(s: GlobalSettings): Promise<string> {
+  protected async render(s: GlobalSettings, _actionId: string): Promise<string> {
     const rest = new MrFpgaRest(s.host!, s.port);
     return renderNowPlaying(await rest.getStatus());
   }

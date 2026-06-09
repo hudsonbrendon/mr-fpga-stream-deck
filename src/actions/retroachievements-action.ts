@@ -8,7 +8,7 @@ import type { GlobalSettings } from "../core/types.js";
 export class RetroAchievementsAction extends BaseDisplayAction {
   protected readonly label = "retro";
   protected needs(s: GlobalSettings): boolean { return Boolean(s.raUsername && s.raApiKey); }
-  protected async render(s: GlobalSettings): Promise<string> {
+  protected async render(s: GlobalSettings, _actionId: string): Promise<string> {
     return renderRa(await fetchRaStats(s.raUsername!, s.raApiKey!));
   }
 }

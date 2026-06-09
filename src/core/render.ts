@@ -1,5 +1,5 @@
 import { formatLoad, formatPercent, formatUptime } from "./format.js";
-import type { ControlKind, NowPlaying, RaStats, SystemTelemetry } from "./types.js";
+import type { ControlKind, NowPlaying, RaStats, SystemMetric, SystemTelemetry } from "./types.js";
 
 const BG = "#1a1a1a";
 const ACCENT = "#5a9bd4";   // MiSTer blue
@@ -45,7 +45,8 @@ export function renderNowPlaying(np: NowPlaying): string {
   <text x="72" y="120" fill="${GREY}" font-size="11" font-family="sans-serif" text-anchor="middle">${clip(np.hostname ?? "", 18)}</text>`);
 }
 
-export function renderSystem(t: SystemTelemetry): string {
+/** All three metrics on one key (the "all" layout). */
+function renderSystemAll(t: SystemTelemetry): string {
   return svg(`
   <text x="72" y="22" fill="${ACCENT}" font-size="14" font-weight="bold" font-family="sans-serif" text-anchor="middle">SYSTEM</text>
   <text x="${BAR_X}" y="52" fill="${GREY}" font-size="13" font-family="sans-serif">LOAD</text>
@@ -55,6 +56,23 @@ export function renderSystem(t: SystemTelemetry): string {
   ${bar(t.memoryUsedPercent ?? 0, 88, ACCENT)}
   <text x="${BAR_X}" y="124" fill="${GREY}" font-size="13" font-family="sans-serif">UP</text>
   <text x="127" y="124" fill="#fff" font-size="13" font-family="sans-serif" text-anchor="end">${formatUptime(t.uptimeSeconds)}</text>`);
+}
+
+/** One metric, large and centered. */
+function renderSystemSingle(t: SystemTelemetry, metric: Exclude<SystemMetric, "all">): string {
+  const view = {
+    load: { title: "LOAD", value: formatLoad(t.cpuLoad1m), pct: null as number | null },
+    ram: { title: "RAM", value: formatPercent(t.memoryUsedPercent), pct: t.memoryUsedPercent ?? 0 },
+    uptime: { title: "UPTIME", value: formatUptime(t.uptimeSeconds), pct: null as number | null },
+  }[metric];
+  return svg(`
+  <text x="72" y="30" fill="${ACCENT}" font-size="16" font-weight="bold" font-family="sans-serif" text-anchor="middle">${view.title}</text>
+  <text x="72" y="88" fill="#fff" font-size="40" font-weight="bold" font-family="sans-serif" text-anchor="middle">${view.value}</text>
+  ${view.pct !== null ? bar(view.pct, 108, ACCENT) : ""}`);
+}
+
+export function renderSystem(t: SystemTelemetry, metric: SystemMetric = "all"): string {
+  return metric === "all" ? renderSystemAll(t) : renderSystemSingle(t, metric);
 }
 
 export function renderRa(ra: RaStats): string {
@@ -79,6 +97,6 @@ const CONTROL_LABEL: Record<ControlKind, string> = {
 
 export function renderControl(kind: ControlKind): string {
   return svg(`
-  <text x="72" y="62" fill="${ACCENT}" font-size="13" font-weight="bold" font-family="sans-serif" text-anchor="middle">MiSTer</text>
+  <text x="72" y="62" fill="${ACCENT}" font-size="13" font-weight="bold" font-family="sans-serif" text-anchor="middle">Mr. FPGA</text>
   <text x="72" y="92" fill="#fff" font-size="20" font-weight="bold" font-family="sans-serif" text-anchor="middle">${CONTROL_LABEL[kind]}</text>`);
 }

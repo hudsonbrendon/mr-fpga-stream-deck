@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Mr. FPGA System</title>
+    <script src="https://sdpi-components.dev/releases/v4/sdpi-components.js"></script>
+  </head>
+  <body>
+    <sdpi-item label="Metric">
+      <sdpi-select setting="metric" default="all">
+        <option value="all">All (load + RAM + uptime)</option>
+        <option value="load">Load only</option>
+        <option value="ram">RAM only</option>
+        <option value="uptime">Uptime only</option>
+      </sdpi-select>
+    </sdpi-item>
+
+    <sdpi-item label="Mr. FPGA IP / host">
+      <sdpi-textfield setting="host" global placeholder="192.168.1.50"></sdpi-textfield>
+    </sdpi-item>
+    <sdpi-item label="REST port">
+      <sdpi-textfield setting="port" global placeholder="8182"></sdpi-textfield>
+    </sdpi-item>
+    <sdpi-item label="Refresh (sec)">
+      <sdpi-range setting="refreshSeconds" min="5" max="120" step="5" default="15" global showlabels></sdpi-range>
+    </sdpi-item>
+
+    <details>
+      <summary>SSH</summary>
+      <sdpi-item label="SSH user"><sdpi-textfield setting="sshUser" global placeholder="root"></sdpi-textfield></sdpi-item>
+      <sdpi-item label="SSH password"><sdpi-password setting="sshPassword" global placeholder="1"></sdpi-password></sdpi-item>
+      <sdpi-item label="SSH port"><sdpi-textfield setting="sshPort" global placeholder="22"></sdpi-textfield></sdpi-item>
+    </details>
+  </body>
+</html>

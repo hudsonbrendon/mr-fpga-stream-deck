@@ -24,12 +24,37 @@ describe("renderNowPlaying", () => {
 });
 
 describe("renderSystem", () => {
-  it("shows load, ram, and uptime", () => {
-    const t: SystemTelemetry = { activeCore: "SNES", uptimeSeconds: 3 * 86400 + 4 * 3600, cpuLoad1m: 0.42, memoryUsedPercent: 38 };
+  const t: SystemTelemetry = { activeCore: "SNES", uptimeSeconds: 3 * 86400 + 4 * 3600, cpuLoad1m: 0.42, memoryUsedPercent: 38 };
+
+  it("shows load, ram, and uptime together in the default 'all' layout", () => {
     const svg = renderSystem(t);
     expect(svg).toContain("0.42");
     expect(svg).toContain("38%");
     expect(svg).toContain("3d4h");
+  });
+
+  it("renders the load metric large and alone", () => {
+    const svg = renderSystem(t, "load");
+    expect(svg).toContain("LOAD");
+    expect(svg).toContain("0.42");
+    expect(svg).toContain('font-size="40"');
+    expect(svg).not.toContain("38%");
+  });
+
+  it("renders the RAM metric large with a bar", () => {
+    const svg = renderSystem(t, "ram");
+    expect(svg).toContain("RAM");
+    expect(svg).toContain("38%");
+    expect(svg).toContain('font-size="40"');
+    expect(svg).toContain("#5a9bd4"); // bar fill
+  });
+
+  it("renders the uptime metric large and alone", () => {
+    const svg = renderSystem(t, "uptime");
+    expect(svg).toContain("UPTIME");
+    expect(svg).toContain("3d4h");
+    expect(svg).toContain('font-size="40"');
+    expect(svg).not.toContain("0.42");
   });
 });
 

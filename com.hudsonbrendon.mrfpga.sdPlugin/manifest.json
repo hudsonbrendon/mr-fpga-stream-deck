@@ -53,7 +53,7 @@
       "Controllers": [
         "Keypad"
       ],
-      "PropertyInspectorPath": "ui/display.html",
+      "PropertyInspectorPath": "ui/system.html",
       "States": [
         {
           "Image": "imgs/actions/system-key",

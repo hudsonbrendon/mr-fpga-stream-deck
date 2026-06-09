@@ -36,6 +36,14 @@ export interface SystemTelemetry {
   memoryUsedPercent: number | null;
 }
 
+/** Which telemetry the System key shows: all three, or one metric large. */
+export type SystemMetric = "all" | "load" | "ram" | "uptime";
+
+/** Per-key (per-action-instance) settings for the System action. */
+export interface SystemKeySettings {
+  metric?: SystemMetric;
+}
+
 /** Per-game RetroAchievements progress. */
 export interface RaGameProgress {
   title: string;
