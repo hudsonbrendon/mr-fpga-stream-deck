@@ -1,5 +1,4 @@
-import streamDeck, { SingletonAction } from "@elgato/streamdeck";
-import { action } from "@elgato/streamdeck";
+import streamDeck, { SingletonAction, action } from "@elgato/streamdeck";
 import type { WillAppearEvent, KeyDownEvent, DidReceiveSettingsEvent } from "@elgato/streamdeck";
 import { MisterRest } from "../mister/rest.js";
 import { renderControl } from "../core/render.js";
