@@ -21,9 +21,15 @@ function bar(pct: number, y: number, color: string): string {
     <rect x="${BAR_X}" y="${y}" width="${w}" height="10" rx="3" fill="${color}"/>`;
 }
 
-/** Truncate a label to fit the key width. */
+/** Escape XML/SVG special characters in network-sourced text (e.g. "Marvel & Capcom"). */
+function esc(text: string): string {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/** Truncate a label to fit the key width, then escape it for safe SVG insertion. */
 function clip(text: string, max: number): string {
-  return text.length > max ? `${text.slice(0, max - 1)}…` : text;
+  const truncated = text.length > max ? `${text.slice(0, max - 1)}…` : text;
+  return esc(truncated);
 }
 
 export function renderNowPlaying(np: NowPlaying): string {
@@ -53,7 +59,7 @@ export function renderSystem(t: SystemTelemetry): string {
 
 export function renderRa(ra: RaStats): string {
   const g = ra.currentGame;
-  const rank = ra.rank !== null ? `#${ra.rank}` : "—";
+  const rank = ra.rank != null ? `#${ra.rank}` : "—";
   return svg(`
   <text x="72" y="22" fill="${GOLD}" font-size="14" font-weight="bold" font-family="sans-serif" text-anchor="middle">RETRO</text>
   <text x="72" y="58" fill="#fff" font-size="30" font-weight="bold" font-family="sans-serif" text-anchor="middle">${ra.hardcorePoints}</text>

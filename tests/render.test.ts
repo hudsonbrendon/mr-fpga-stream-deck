@@ -15,6 +15,12 @@ describe("renderNowPlaying", () => {
     const np: NowPlaying = { online: false, core: null, systemName: null, game: null, gameName: null, hostname: null };
     expect(renderNowPlaying(np)).toContain("OFFLINE");
   });
+  it("escapes XML-special characters in names", () => {
+    const np: NowPlaying = { online: true, core: "PSX", systemName: null, game: null, gameName: "Marvel & Capcom", hostname: "MiSTer" };
+    const svg = renderNowPlaying(np);
+    expect(svg).toContain("Marvel &amp; Capcom");
+    expect(svg).not.toContain("Marvel & Capcom");
+  });
 });
 
 describe("renderSystem", () => {
@@ -42,6 +48,8 @@ describe("renderControl", () => {
     expect(renderControl("reboot")).toContain("REBOOT");
     expect(renderControl("menu")).toContain("MENU");
     expect(renderControl("volume_up")).toContain("VOL +");
+    expect(renderControl("volume_down")).toContain("VOL −");
+    expect(renderControl("screenshot")).toContain("SHOT");
     expect(renderControl("launch")).toContain("LAUNCH");
   });
 });
