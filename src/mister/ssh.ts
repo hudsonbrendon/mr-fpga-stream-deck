@@ -30,11 +30,12 @@ export function parseSshProbe(raw: string): SystemTelemetry {
   }
 
   let memoryUsedPercent: number | null = null;
-  const memLines = memS.split(/\s+/).filter(Boolean);
-  if (memLines.length >= 2) {
-    const total = toInt(memLines[0]);
-    const avail = toInt(memLines[1]);
-    if (total && avail !== null) {
+  // awk prints MemTotal then MemAvailable (kernel-guaranteed order), on separate lines.
+  const memTokens = memS.split(/\s+/).filter(Boolean);
+  if (memTokens.length >= 2) {
+    const total = toInt(memTokens[0]);
+    const avail = toInt(memTokens[1]);
+    if (total !== null && total > 0 && avail !== null) {
       memoryUsedPercent = Math.round(((total - avail) / total) * 1000) / 10;
     }
   }
